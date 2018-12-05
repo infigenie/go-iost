@@ -127,6 +127,7 @@ func (pm *PeerManager) Start() {
 	pm.parseSeeds()
 	pm.LoadRoutingTable()
 	pm.routingQuery([]string{pm.host.ID().Pretty()})
+	ilog.Info("peer manager starts")
 
 	pm.wg.Add(4)
 	go pm.dumpRoutingTableLoop()
@@ -230,7 +231,7 @@ func (pm *PeerManager) HandleStream(s libnet.Stream, direction connDirection) {
 		s.Conn().Close()
 		return
 	}
-	ilog.Debugf("handle new stream. pid=%s, addr=%v", remotePID.Pretty(), s.Conn().RemoteMultiaddr())
+	ilog.Debugf("handle new stream. pid=%s, addr=%v, direction=%v", remotePID.Pretty(), s.Conn().RemoteMultiaddr(), direction)
 
 	peer := pm.GetNeighbor(remotePID)
 	if peer != nil {
@@ -479,7 +480,7 @@ func (pm *PeerManager) routingQuery(ids []string) {
 		if pm.GetNeighbor(peerID) != nil {
 			continue
 		}
-		ilog.Debugf("dial peer: pid=%v", peerID.Pretty())
+		ilog.Infof("dial peer: pid=%v", peerID.Pretty())
 		stream, err := pm.host.NewStream(context.Background(), peerID, protocolID)
 		if err != nil {
 			ilog.Errorf("create stream failed. pid=%s, err=%v", peerID.Pretty(), err)
