@@ -479,6 +479,7 @@ func (pm *PeerManager) routingQuery(ids []string) {
 		if pm.GetNeighbor(peerID) != nil {
 			continue
 		}
+		ilog.Debugf("dial peer: pid=%v", peerID.Pretty())
 		stream, err := pm.host.NewStream(context.Background(), peerID, protocolID)
 		if err != nil {
 			ilog.Errorf("create stream failed. pid=%s, err=%v", peerID.Pretty(), err)
