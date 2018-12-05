@@ -11,10 +11,10 @@ import (
 	"github.com/iost-official/go-iost/ilog"
 	"github.com/iost-official/go-iost/p2p"
 	"github.com/iost-official/go-iost/rpc/pb"
-	"golang.org/x/net/netutil"
 
 	"github.com/grpc-ecosystem/go-grpc-middleware"
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
+	"golang.org/x/net/netutil"
 	"google.golang.org/grpc"
 )
 
