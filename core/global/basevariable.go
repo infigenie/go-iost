@@ -84,7 +84,7 @@ func New(conf *common.Config) (*BaseVariableImpl, error) {
 		stateDB:       stateDB,
 		mode:          ModeInit,
 		modeMutex:     new(sync.RWMutex),
-		continuousNum: 6,
+		continuousNum: 10,
 		config:        conf,
 	}, nil
 }

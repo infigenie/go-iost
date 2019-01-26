@@ -40,9 +40,9 @@ var (
 var (
 	blockReqTimeout   = 3 * time.Second
 	continuousNum     int
-	subSlotTime       = 500 * time.Millisecond
-	genBlockTime      = 400 * time.Millisecond
-	last2GenBlockTime = 50 * time.Millisecond
+	subSlotTime       = 300 * time.Millisecond
+	genBlockTime      = 250 * time.Millisecond
+	last2GenBlockTime = 30 * time.Millisecond
 	tWitness          = ""
 	tContinuousNum    = 0
 )
